@@ -35,7 +35,7 @@ class ImageIcon extends StatelessWidget {
     this.useOriginalColors = false,
   }) : assert(
          !(useOriginalColors && color != null),
-         'ImageIcon color is ignored when useOriginalColors is true. '
+         'Cannot provide both a color and useOriginalColors. '
          'To use a specific color, set useOriginalColors to false or omit it.',
        );
 
