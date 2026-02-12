@@ -118,7 +118,7 @@ void main() {
         textDirection: TextDirection.ltr,
         child: IconTheme(
           data: const IconThemeData(color: Color(0xFF0000FF)),
-          child: ImageIcon(image, renderOriginalImage: true),
+          child: ImageIcon(image, useOriginalColors: true),
         ),
       ),
     );

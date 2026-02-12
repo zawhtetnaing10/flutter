@@ -32,8 +32,12 @@ class ImageIcon extends StatelessWidget {
     this.size,
     this.color,
     this.semanticLabel,
-    this.renderOriginalImage = false,
-  });
+    this.useOriginalColors = false,
+  }) : assert(
+         !(useOriginalColors && color != null),
+         'ImageIcon color is ignored when useOriginalColors is true. '
+         'To use a specific color, set useOriginalColors to false or omit it.',
+       );
 
   /// The image to display as the icon.
   ///
@@ -81,7 +85,7 @@ class ImageIcon extends StatelessWidget {
   /// multi-colored logo) but still need to be sized and aligned like an icon.
   ///
   /// Defaults to false.
-  final bool renderOriginalImage;
+  final bool useOriginalColors;
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +112,7 @@ class ImageIcon extends StatelessWidget {
         image: image!,
         width: iconSize,
         height: iconSize,
-        color: renderOriginalImage ? null : iconColor,
+        color: useOriginalColors ? null : iconColor,
         fit: BoxFit.scaleDown,
         excludeFromSemantics: true,
       ),
