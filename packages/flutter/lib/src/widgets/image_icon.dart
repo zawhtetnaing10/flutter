@@ -74,15 +74,15 @@ class ImageIcon extends StatelessWidget {
 
   /// Whether to render the image using its original colors.
   ///
-  /// If this is false (the default), the image will be colorized using the
-  /// color from the current [IconTheme], unless a [color] is explicitly provided.
+  /// If this is false (the default), the image is colorized by merging the
+  /// [color] (or the [IconTheme] color) with the image using [BlendMode.srcIn].
+  /// This is the standard behavior for icons.
   ///
-  /// If this is true, the [IconTheme] color is ignored, and the image is
-  /// rendered with its intrinsic colors (passing null to the underlying [Image]
-  /// widget's color property).
+  /// If this is true, the color-blend filter is disabled, and the image is
+  /// rendered with its original colors. This allows multi-colored images,
+  /// such as brand logos, to be displayed accurately.
   ///
-  /// This is useful for icons that carry their own branding colors (like a
-  /// multi-colored logo) but still need to be sized and aligned like an icon.
+  /// If this is true, [color] must be null.
   ///
   /// Defaults to false.
   final bool useOriginalColors;
